@@ -31,7 +31,7 @@ abstract class BaseController
      *
      * @var string
      */
-    protected $defaultFormat = 'best[protocol=https]/best[protocol=http]';
+    protected $defaultFormat;
 
     /**
      * Slim dependency container.
@@ -73,10 +73,6 @@ abstract class BaseController
         $session = SessionManager::getSession();
         $this->sessionSegment = $session->getSegment(self::class);
         $this->localeManager = $this->container->get('locale');
-
-        if ($this->config->stream) {
-            $this->defaultFormat = 'best';
-        }
     }
 
     /**
